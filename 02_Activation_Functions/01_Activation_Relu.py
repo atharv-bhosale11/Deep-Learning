@@ -1,13 +1,13 @@
 # ---------------------------------------------------------
 # Program : Artificial Neuron with ReLU Activation
-# Author  : Piyush Manohar Khairnar
+# Author  : Atharv Tushar Bhosale
 # ---------------------------------------------------------
 
 import matplotlib.pyplot as plt
 import numpy as np
 
 # ---------------------------------------------------------
-# STEP 1 : Activation Function (ReLU)
+# STEP 1 : Activation Function (ReLU) 
 # ---------------------------------------------------------
 # ReLU = max(0, z)
 # If z is positive → output z
@@ -25,7 +25,7 @@ def relu(z):
 # 2. Summation + Bias
 # 3. Activation (ReLU)
 
-def Marvellous_neuron_forward(inputs, weights, bias):
+def neuron_forward(inputs, weights, bias):
 
     print("\n----- NEURON CALCULATION START -----\n")
 
@@ -97,7 +97,7 @@ def plot_relu():
 
 def main():
 
-    print("\n========= MARVELLOUS NEURON DEMO =========\n")
+    print("\n============ NEURON DEMO =========\n")
 
     # Example Inputs (features)
     inputs = [1.0, 2.0, 3.0] 
@@ -109,7 +109,7 @@ def main():
     bias = 0.5
 
     # Perform forward propagation
-    z, y_hat = Marvellous_neuron_forward(inputs, weights, bias)
+    z, y_hat = neuron_forward(inputs, weights, bias)
 
     # Plot ReLU graph
     plot_relu()
