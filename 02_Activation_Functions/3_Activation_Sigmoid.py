@@ -1,6 +1,6 @@
 # ---------------------------------------------------------
 # Program : Artificial Neuron with Sigmoid Activation
-# Author  : Piyush Manohar Khairnar
+# Author  : Atharv Tushat Bhosale
 # ---------------------------------------------------------
 
 import math
@@ -28,7 +28,7 @@ def sigmoid(z):
 # 2. Add bias
 # 3. Apply sigmoid activation
 
-def Marvellous_neuron_forward(inputs, weights, bias):
+def neuron_forward(inputs, weights, bias):
 
     print("\n----- NEURON CALCULATION START -----\n")
 
@@ -100,19 +100,19 @@ def plot_sigmoid():
 
 def main():
 
-    print("\n========= MARVELLOUS SIGMOID NEURON =========\n")
+    print("\n========= SIGMOID NEURON =========\n")
 
     # Example inputs
     inputs = [1.0, 2.0, 3.0]
 
     # Weights
     weights = [0.6, 0.4, -0.2]
-
+ 
     # Bias
     bias = 0.5
 
     # Forward pass
-    z, y_hat = Marvellous_neuron_forward(inputs, weights, bias)
+    z, y_hat = neuron_forward(inputs, weights, bias)
 
     print("Final z     :", z)
     print("Final y_hat :", y_hat)
