@@ -3,7 +3,7 @@
 #   Input Layer   : 2 inputs
 #   Hidden Layer  : 2 neurons with ReLU activation
 #   Output Layer  : 1 neuron with Sigmoid activation
-# ---------------------------------------------------------
+# --------------------------------------------------------- 
 
 import math
 
