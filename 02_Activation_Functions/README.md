@@ -55,7 +55,7 @@ python 01_Activation_Relu.py
 ```
 
 ## 🎯 Learning Objectives
-
+ 
 * Understand the importance of activation functions in neural networks.
 * Implement ReLU and Sigmoid using Python.
 * Understand how activation functions transform weighted sums.
@@ -64,6 +64,3 @@ python 01_Activation_Relu.py
 ## 👨‍💻 Author
 
 **Atharv Bhosale**
-
-Part of the **Deep-Learning** GitHub repository.
-
