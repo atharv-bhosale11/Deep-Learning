@@ -1,4 +1,3 @@
-```python
 import math
 import matplotlib.pyplot as plt
 import numpy as np
@@ -238,5 +237,4 @@ plt.xlabel("Stages")
 plt.ylabel("Value")
 plt.grid(True, linestyle='--', alpha=0.6)
 plt.show()
-```
 
