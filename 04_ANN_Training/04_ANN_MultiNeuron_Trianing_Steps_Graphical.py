@@ -3,7 +3,7 @@
 # ---------------------------------------------------------
 
 import random
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt 
 
 print("\n==========================================================")
 print("      MULTI-NEURON ANN TRAINING DEMO")
