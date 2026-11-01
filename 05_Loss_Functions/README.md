@@ -62,17 +62,11 @@ python 02_LossFunction_MAE.py
 ## 🎯 Learning Objectives
 
 * Understand the purpose of loss functions.
-* Calculate prediction errors using MSE and MAE.
+* Calculate prediction errors using MSE and MAE. 
 * Understand the difference between squared error and absolute error.
 * Learn how loss functions help evaluate regression models.
 
 ## 👨‍💻 Author
 
 **Atharv Bhosale**
-
-Computer Engineering | Python | Machine Learning | Deep Learning
-
----
-
-⭐ This folder is part of my **Deep Learning** repository, documenting my learning and implementation of fundamental neural network concepts.
 
