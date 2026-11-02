@@ -92,9 +92,3 @@ python 02_Gradient_Backpropagation_Graphical.py
 
 **Atharv Bhosale**
 
-Computer Engineering | Python | Machine Learning | Deep Learning
-
----
-
-⭐ This folder is part of my **Deep Learning** repository, documenting my learning and implementation of Artificial Neural Network training algorithms.
-
