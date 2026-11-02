@@ -15,7 +15,7 @@ from matplotlib.animation import FuncAnimation
 # Sigmoid activation function
 def Sigmoid(value):
     return 1 / (1 + math.exp(-value))
-
+ 
 # Derivative of sigmoid
 def Sigmoid_Derivative(output):
     return output * (1 - output)
