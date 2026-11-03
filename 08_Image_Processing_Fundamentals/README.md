@@ -104,10 +104,3 @@ python 03_Color_Image_Pixel_Display.py
 ## 👨‍💻 Author
 
 **Atharv Bhosale**
-
-Computer Engineering | Python | Machine Learning | Deep Learning
-
----
-
-⭐ This folder is part of my **Deep Learning** repository, documenting my learning and implementation of fundamental image processing concepts used in Computer Vision and CNNs.
-
