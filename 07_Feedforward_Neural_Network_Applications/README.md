@@ -122,9 +122,3 @@ python 04_FNN_Placement_Prediction.py
 ## 👨‍💻 Author
 
 **Atharv Bhosale**
-
-Computer Engineering | Python | Machine Learning | Deep Learning
-
----
-
-⭐ This folder is part of my **Deep Learning** repository, documenting practical implementations and applications of Feedforward Neural Networks.
