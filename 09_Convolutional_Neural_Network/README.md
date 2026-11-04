@@ -80,6 +80,3 @@ python 05_Realtime_Image_Classification.py
 ## 👨‍💻 Author
 
 **Atharv Bhosale**
-
-GitHub: [atharbhosale11](https://github.com/atharbhosale11)
-
