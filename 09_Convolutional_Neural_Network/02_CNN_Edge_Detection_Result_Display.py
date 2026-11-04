@@ -8,7 +8,7 @@
 # 1. Input image
 # 2. Current 3x3 region
 # 3. Multiplication result
-# 4. Feature map building step by step
+# 4. Feature map building step by step 
 # ------------------------------------------------------------
 
 import numpy as np
