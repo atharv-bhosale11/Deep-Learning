@@ -1,7 +1,7 @@
 # ------------------------------------------------------------
 # 6x6 Grayscale Image
 # Top Half = Black (0)
-# Bottom Half = White (255)
+# Bottom Half = White (255) 
 # Apply 3x3 Kernel for Edge Detection
 # Show Feature Map
 # ------------------------------------------------------------
