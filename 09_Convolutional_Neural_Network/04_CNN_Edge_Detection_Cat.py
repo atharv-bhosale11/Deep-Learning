@@ -4,7 +4,7 @@
 
 import cv2
 
-# Load image
+# Load image 
 img = cv2.imread("sample.png")
 
 # Convert to grayscale
