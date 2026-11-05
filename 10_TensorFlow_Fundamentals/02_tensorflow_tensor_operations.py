@@ -8,7 +8,7 @@ tensor2 = tf.constant([1, 2, 3])
 # Addition
 addition_result = tf.add(tensor1, tensor2)
 print("Addition:", addition_result)
-
+ 
 # Subtraction
 subtraction_result = tf.subtract(tensor1, tensor2)
 print("Subtraction:", subtraction_result)
