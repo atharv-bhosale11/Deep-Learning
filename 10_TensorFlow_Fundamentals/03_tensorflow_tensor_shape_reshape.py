@@ -11,7 +11,7 @@ print("Original Shape:", original_tensor.shape)
 print()
 
 # Reshape into 3 rows and 4 columns
-reshaped_tensor = tf.reshape(original_tensor, (3, 4))
+reshaped_tensor = tf.reshape(original_tensor, (3, 4)) 
 
 print("Reshaped Tensor (3x4):")
 print(reshaped_tensor)
