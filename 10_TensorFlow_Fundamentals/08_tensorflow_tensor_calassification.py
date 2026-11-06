@@ -48,3 +48,4 @@ if prediction[0][0] > 0.5:
     print("Predicted Class: Pass")
 else:
     print("Predicted Class: Fail")
+
