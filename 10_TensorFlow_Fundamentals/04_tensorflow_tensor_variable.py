@@ -3,7 +3,7 @@ import tensorflow as tf
 print("----- TensorFlow Variable Example -----")
 
 # Create a variable
-weight = tf.Variable(5.0)
+weight = tf.Variable(5.0) 
 
 print("Initial Weight Value:")
 print(weight.numpy())
