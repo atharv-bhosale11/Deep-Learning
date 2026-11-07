@@ -88,5 +88,3 @@ python 09_tensorflow_tensor_ANN_image_classification.py
 ## 👨‍💻 Author
 
 **Atharv Bhosale**
-
-GitHub: [atharv-bhosale11](https://github.com/atharv-bhosale11)
