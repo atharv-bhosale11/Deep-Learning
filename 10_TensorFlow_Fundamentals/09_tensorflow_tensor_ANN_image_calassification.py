@@ -3,7 +3,7 @@ from tensorflow import keras
 
 import numpy as np
 import matplotlib.pyplot as plt
-
+ 
 def main():
     fashion_mnist = keras.datasets.fashion_mnist
 
