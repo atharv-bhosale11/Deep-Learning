@@ -7,7 +7,7 @@ import time
 # ------------------------------------------------------------
 def Display(matrix, title):
     plt.figure(figsize=(4, 4))
-    plt.imshow(matrix, cmap='gray', interpolation='nearest')
+    plt.imshow(matrix, cmap='gray', interpolation='nearest') 
     plt.title(title)
     plt.colorbar()
 
