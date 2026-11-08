@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 def Line():
     print("\n" + "-" * 70)
 
-# ------------------------------------------------------------
+# ------------------------------------------------------------ 
 # Function to display matrix graphically with values
 # ------------------------------------------------------------
 def Display(matrix, title, cmap='gray'):
