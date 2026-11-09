@@ -2,7 +2,7 @@ import numpy as np
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import SimpleRNN, Dense
 from tensorflow.keras.utils import to_categorical
-
+ 
 def CharcterPredictions():
 
     # 1) Prepare toy text dataset
