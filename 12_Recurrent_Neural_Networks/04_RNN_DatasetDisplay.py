@@ -10,7 +10,7 @@ sentences = [
     "food was not good"
 ]
 
-labels = [1, 0, 0]
+labels = [1, 0, 0] 
 
 print("=" * 60)
 print("   RNN Applications - Program 1")
