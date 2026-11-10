@@ -12,7 +12,7 @@ print("=" * 60)
 print("   RNN Applications - Program 2")
 print("=" * 60)
 
-print("Target of this Program:")
+print("Target of this Program:") 
 print("Split sentence into individual words")
 print("-" * 60)
 
