@@ -6,7 +6,7 @@
 
 sentences = [
     "food was good",
-    "food was bad",
+    "food was bad", 
     "food was not good"
 ]
 
