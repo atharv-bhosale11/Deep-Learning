@@ -4,7 +4,7 @@
 # Use Keras Tokenizer to automatically create word index
 # ============================================================
 
-from tensorflow.keras.preprocessing.text import Tokenizer
+from tensorflow.keras.preprocessing.text import Tokenizer 
 
 sentences = [
     "food was good",
