@@ -1,6 +1,6 @@
 # ============================================================
 # Program 7 : Padding using Keras
-# Target:
+# Target: 
 # Use pad_sequences to make all sentence sequences equal length
 # ============================================================
 
