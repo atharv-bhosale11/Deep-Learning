@@ -6,7 +6,7 @@
 
 from tensorflow.keras.preprocessing.text import Tokenizer
 
-sentences = [
+sentences = [ 
     "food was good",
     "food was bad",
     "food was not good"
