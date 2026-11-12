@@ -1,5 +1,5 @@
 # ============================================================
-# Program 13 : Hidden State Concept
+# Program 13 : Hidden State Concept 
 # Target:
 # Understand hidden state as memory of RNN
 # ============================================================
