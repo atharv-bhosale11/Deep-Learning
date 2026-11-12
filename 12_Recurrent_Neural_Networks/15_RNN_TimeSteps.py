@@ -5,7 +5,7 @@
 # ============================================================
 
 sentence = "food was not good"
-
+ 
 words = sentence.split()
 
 print("=" * 60)
