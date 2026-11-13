@@ -3,7 +3,7 @@
 ## Overview
 
 This section contains Python implementations and practical examples of Recurrent Neural Networks (RNNs) using TensorFlow and Keras.
-
+ 
 The programs demonstrate how sequential data is processed, how text is converted into numerical representations, and how RNNs use hidden states to retain information from previous time steps.
 
 ## Programs
