@@ -10,7 +10,7 @@ values = [-3, -1, 0, 1, 3]
 
 print("=" * 60)
 print("   RNN Applications - Program 15")
-print("=" * 60)
+print("=" * 60) 
 
 print("Target of this Program:")
 print("Understand tanh activation function")
