@@ -5,7 +5,7 @@
 # ============================================================
 
 import numpy as np
-
+ 
 # Sentence: food was not good
 # Token sequence: [1, 2, 5, 3]
 
