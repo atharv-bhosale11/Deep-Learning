@@ -4,7 +4,7 @@
 # Understand loss calculation for binary classification
 # ============================================================
 
-import numpy as np
+import numpy as np 
 
 def binary_crossentropy(actual, predicted):
     return -(actual * np.log(predicted) + (1 - actual) * np.log(1 - predicted))
