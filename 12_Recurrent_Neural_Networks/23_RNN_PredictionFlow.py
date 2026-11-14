@@ -90,4 +90,5 @@ def Predict_Sentiment(text):
 
 Predict_Sentiment("food was good")
 Predict_Sentiment("food was bad")
+Predict_Sentiment("food was not good")
 
