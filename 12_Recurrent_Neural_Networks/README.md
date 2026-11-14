@@ -70,6 +70,7 @@ from tensorflow.keras.layers import SimpleRNN, Embedding, Dense
 - Basic Python programming
 - NumPy fundamentals
 - Basic understanding of Neural Networks
+- Basic understanding of Machine Learning
 
 
 ## Learning Objectives
@@ -79,7 +80,7 @@ from tensorflow.keras.layers import SimpleRNN, Embedding, Dense
 - Understand vocabulary creation and tokenization.
 - Learn why padding is required for sequence processing.
 - Understand word embeddings and embedding layers.
-- Understand how hidden states maintain information across time steps.
+- Understand how hidden states maintain information across time steps. 
 - Explore activation functions used in RNN architectures.
 - Understand binary classification concepts.
 - Perform manual RNN hidden-state calculations.
