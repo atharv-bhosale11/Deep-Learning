@@ -3,7 +3,7 @@
 ## Overview
 
 This section contains Python implementations and practical examples of Recurrent Neural Networks (RNNs) using TensorFlow and Keras.
- 
+
 The programs demonstrate how sequential data is processed, how text is converted into numerical representations, and how RNNs use hidden states to retain information from previous time steps.
 
 ## Programs
@@ -19,6 +19,15 @@ The programs demonstrate how sequential data is processed, how text is converted
 | 07 | RNN Keras Tokenization | Automatically creating vocabulary using Keras Tokenizer. |
 | 08 | RNN Text to Sequences | Converting text sentences into numeric sequences. |
 | 09 | RNN Use of Padding | Understanding why padding is required for equal-length sequences. |
+| 10 | RNN Padding using Keras | Applying Keras padding to create equal-length RNN sequences. |
+| 11 | RNN Vocabulary Size | Calculating vocabulary size required for the RNN embedding layer. |
+| 12 | RNN Output Labels | Understanding binary classification output labels for sentiment analysis. |
+| 13 | RNN Manual Embedding | Demonstrating manual word embedding using numeric vectors. |
+| 14 | RNN Embedding using Keras | Demonstrating the Keras Embedding layer and word vector representations. |
+| 15 | RNN Time Steps | Explaining RNN time steps using sentence processing. |
+| 16 | RNN Hidden State | Demonstrating RNN hidden state as sequential memory. |
+| 17 | RNN Manual Calculations | Implementing manual RNN hidden state calculation using tanh. |
+| 18 | RNN Tanh Activation | Demonstrating the tanh activation function used in SimpleRNN. |
 
 ## Key Concepts Covered
 
@@ -32,6 +41,8 @@ The programs demonstrate how sequential data is processed, how text is converted
 - Sequence padding
 - Word embeddings
 - Embedding layers using Keras
+- Binary classification output labels
+- Vocabulary size calculation
 - Time steps and hidden states
 - Manual RNN hidden-state calculations
 - Tanh and Sigmoid activation functions
@@ -59,7 +70,7 @@ from tensorflow.keras.layers import SimpleRNN, Embedding, Dense
 - Basic Python programming
 - NumPy fundamentals
 - Basic understanding of Neural Networks
-- Basic understanding of Machine Learning
+
 
 ## Learning Objectives
 
@@ -70,10 +81,10 @@ from tensorflow.keras.layers import SimpleRNN, Embedding, Dense
 - Understand word embeddings and embedding layers.
 - Understand how hidden states maintain information across time steps.
 - Explore activation functions used in RNN architectures.
+- Understand binary classification concepts.
+- Perform manual RNN hidden-state calculations.
 - Build practical RNN-based applications.
 
 ## Author
 
 **Atharv Bhosale**
-
-GitHub: [atharv-bhosale11](https://github.com/atharv-bhosale11)
