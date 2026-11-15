@@ -105,6 +105,8 @@ from tensorflow.keras.layers import SimpleRNN, Embedding, Dense
 - Understand RNN architecture and model training.
 - Learn the complete sentiment prediction workflow.
 - Understand mathematical operations inside RNN layers.
+- Visualize embedding matrices, hidden states and neural network calculations.
+- Build practical RNN-based applications.
 
 
 ## Author
