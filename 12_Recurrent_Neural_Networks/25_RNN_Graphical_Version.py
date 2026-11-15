@@ -514,4 +514,10 @@ plt.text(0.05, 0.5, summary, fontsize=12, va="center")
 plt.axis("off")
 plt.show()
 
+print("\nConclusion:")
+print("Embedding layer converts token IDs into vectors using lookup.")
+print("RNN combines current word vector with previous hidden state.")
+print("Dense layer converts final memory into a score.")
+print("Sigmoid converts score into probability.")
+print("Threshold converts probability into final sentiment.")
 
