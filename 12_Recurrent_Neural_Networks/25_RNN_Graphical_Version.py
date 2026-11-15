@@ -3,7 +3,7 @@
 #           Calculations of Embedding, RNN, Dense and Sigmoid
 # ============================================================
 
-import numpy as np
+import numpy as np 
 import matplotlib.pyplot as plt
 import math
 
