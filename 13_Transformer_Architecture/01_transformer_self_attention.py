@@ -252,7 +252,7 @@ for i, word in enumerate(words):
         print(
             f"Feature {feature_index + 1}: "
             + " + ".join(terms)
-            + f" = {total:.3f}"
+            + f" = {total:.3f}" 
         )
 
 print("\nMeaning of Final Output:")
@@ -263,4 +263,5 @@ print("Each final vector contains information collected from all words.")
 print("Final Word-wise Contextual Representation")
 print("-" * 70)
 
-
+for word, vector in zip(words, output):
+    print(f"{word:5s} -> {vector}")
