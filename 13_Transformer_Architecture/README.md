@@ -59,12 +59,6 @@ import numpy as np
 - Learn how Self-Attention processes input sequences.
 - Understand Query, Key and Value representations.
 - Perform manual attention score calculations.
-- Understand scaled dot-product attention.
-- Learn how Softmax generates attention probabilities.
-- Understand how contextual representations are created.
-- Explore how multiple attention heads process information differently.
-- Understand concatenation of multiple attention head outputs.
-- Implement attention mechanisms using NumPy.
 
 ## Author
 
