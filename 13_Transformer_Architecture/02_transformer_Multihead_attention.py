@@ -281,7 +281,8 @@ print_matrix_with_words("Final Multi-Head Attention Output", final_output, words
 print("\nFinal Word-wise Representation")
 print("-" * 70)
 
-
+for word, vector in zip(words, final_output):
+    print(f"{word:5s} -> {vector}")
 
 print("\nFinal Meaning:")
 print("Head 1 gives one contextual view of the sentence.")
