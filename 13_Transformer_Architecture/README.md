@@ -120,14 +120,6 @@ import numpy as np
 - Learn how Softmax generates attention probabilities.
 - Understand how positional encoding provides word position information.
 - Explore how multiple attention heads process information.
-- Understand residual connections and layer normalization.
-- Learn how feed-forward networks work inside Transformer encoders.
-- Implement Transformer components using NumPy.
-
-## Author
-
-**Atharv Bhosale**
-
 
 ## Learning Objectives
 
