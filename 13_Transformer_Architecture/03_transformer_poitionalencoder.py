@@ -89,4 +89,8 @@ print(final_input)
 
 print("\nWord-wise Final Representation")
 
-
+for word, emb, pe, final in zip(words, embedding, PE, final_input):
+    print(f"\nWord: {word}")
+    print(f"Embedding           : {emb}")
+    print(f"Positional Encoding : {pe}")
+    print(f"Final Input         : {final}") 
