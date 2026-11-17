@@ -190,4 +190,9 @@ print(encoder_output)
 # Final Word-wise Output
 # ------------------------------------------------------------
 
+print("\n" + "=" * 70)
+print("FINAL WORD-WISE ENCODER OUTPUT")
+print("=" * 70)
 
+for word, vector in zip(words, encoder_output):
+    print(f"{word:5s} -> {vector}")
