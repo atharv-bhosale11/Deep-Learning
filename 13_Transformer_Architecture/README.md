@@ -72,6 +72,11 @@ import numpy as np
 - Learn how Softmax generates attention probabilities.
 - Understand how positional encoding provides positional information to word embeddings.
 - Explore how multiple attention heads process information.
+- Understand the Transformer encoder architecture.
+- Understand the Transformer decoder architecture.
+- Explore encoder-only Transformer models.
+- Apply Transformer architecture to sentiment classification.
+- Implement and explore Transformer components through practical Python programs.
 
 
 ## Author
