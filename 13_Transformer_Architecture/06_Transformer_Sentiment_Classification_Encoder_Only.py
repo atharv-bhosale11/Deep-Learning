@@ -7,7 +7,6 @@ def Header(step, title):
     print(f"Step {step}: {title}")
     print("=" * 70)
 
-
 # ------------------------------------------------------------
 # Step 1: Dataset
 # ------------------------------------------------------------
@@ -51,7 +50,6 @@ labels = np.array([
 for s, l in zip(sentences, labels):
     print(s, "=>", "Positive" if l == 1 else "Negative")
 
-
 # ------------------------------------------------------------
 # Step 2: Tokenization and Padding
 # ------------------------------------------------------------
@@ -80,7 +78,6 @@ for sentence, tokens in zip(sentences[:5], x_data.numpy()[:5]):
     print(sentence)
     print(tokens)
     print("-" * 50)
-
 
 # ------------------------------------------------------------
 # Step 3: Embedding and Positional Encoding
@@ -115,7 +112,6 @@ print(position_embedding_output.shape)
 print("\nSample Position Embedding of Position 0:")
 print(position_embedding_output[0].numpy())
 
-
 # ------------------------------------------------------------
 # Step 4: Self-Attention
 # ------------------------------------------------------------
@@ -145,7 +141,6 @@ print(attention_scores.shape)
 print("\nSample Attention Score Matrix of Head 1:")
 print(attention_scores[0][0].numpy())
 
-
 # ------------------------------------------------------------
 # Step 5: Custom Embedding Layer for Actual Model
 # ------------------------------------------------------------
@@ -163,7 +158,6 @@ class TokenAndPositionEmbedding(layers.Layer):
         position_embed = self.position_embedding(positions)
 
         return token_embed + position_embed
-
 
 # ------------------------------------------------------------
 # Step 6: Transformer Encoder Block
@@ -201,7 +195,6 @@ class TransformerEncoder(layers.Layer):
         ffn_output = self.dropout2(ffn_output, training=training)
 
         return self.norm2(out1 + ffn_output)
-
 
 # ------------------------------------------------------------
 # Step 7: Model Building
@@ -245,7 +238,6 @@ model.compile(
 
 model.summary()
 
-
 # ------------------------------------------------------------
 # Step 8: Model Training
 # ------------------------------------------------------------
@@ -261,7 +253,6 @@ history = model.fit(
     verbose=1
 )
 
-
 # ------------------------------------------------------------
 # Step 9: Training Evaluation
 # ------------------------------------------------------------
@@ -273,7 +264,6 @@ loss, accuracy = model.evaluate(x_data, labels, verbose=0)
 
 print("Training Loss     :", loss)
 print("Training Accuracy :", accuracy)
-
 
 # ------------------------------------------------------------
 # Step 10: Prediction
@@ -309,7 +299,7 @@ for sentence, prediction in zip(test_sentences, predictions):
     score = prediction[0]
     result = "Positive" if score >= 0.5 else "Negative"
 
-    print("-" * 60)
+    print("-" * 60) 
     print("Sentence :", sentence)
     print("Score    :", score)
     print("Result   :", result)
