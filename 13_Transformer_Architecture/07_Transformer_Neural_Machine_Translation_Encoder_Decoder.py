@@ -419,4 +419,25 @@ def translate_sentence(input_sentence):
 
     return final_sentence
 
+# ============================================================
+# Step 10: Final Testing
+# ============================================================
+
+Header(10, "Final Translation Testing")
+
+test_sentences = [
+    "i love ai",
+    "i love python",
+    "this course is good",
+    "teacher explains well",
+    "students are learning",
+    "deep learning is powerful"
+]
+
+for sentence in test_sentences:
+    output = translate_sentence(sentence)
+
+    print("-" * 60)
+    print("English :", sentence)
+    print("Marathi :", output)
 
