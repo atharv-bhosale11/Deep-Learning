@@ -341,4 +341,7 @@ print("\nProbabilities after Softmax")
 print(probabilities)
 
 print("\nPredicted Word at Each Position")
+for i, row in enumerate(probabilities):
+    predicted_index = np.argmax(row)
+    print(f"Position {i + 1}: {vocabulary[predicted_index]}")
 
