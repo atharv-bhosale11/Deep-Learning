@@ -305,3 +305,11 @@ predictions = model.predict(test_data)
 
 print("\nFinal Prediction Output:")
 
+for sentence, prediction in zip(test_sentences, predictions):
+    score = prediction[0]
+    result = "Positive" if score >= 0.5 else "Negative"
+
+    print("-" * 60)
+    print("Sentence :", sentence)
+    print("Score    :", score)
+    print("Result   :", result)
