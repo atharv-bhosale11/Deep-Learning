@@ -2,172 +2,152 @@ import tensorflow as tf
 from tensorflow.keras import layers
 import numpy as np
 
+# ------------------------------------------------------------
+# Utility Header
+# ------------------------------------------------------------
+
 def Header(step, title):
-    print("\n" + "=" * 70)
+    print("\n" + "=" * 75)
     print(f"Step {step}: {title}")
-    print("=" * 70)
+    print("=" * 75)
 
 
-# ------------------------------------------------------------
-# Step 1: Dataset
-# ------------------------------------------------------------
+# ============================================================
+# Step 1: Dataset Creation
+# ============================================================
 
 Header(1, "Dataset Creation")
-print("Explanation: Creating positive and negative training sentences.")
 
-sentences = [
-    "this course is very good",
+print("Creating small English to Marathi translation dataset.")
+
+english_sentences = [
+    "i love ai",
+    "i love python",
+    "we learn transformer",
+    "this course is good",
+    "teacher explains well",
+    "students are learning",
+    "machine learning is interesting",
+    "deep learning is powerful",
     "i like this session",
-    "transformer concept is excellent",
-    "teaching is very clear",
-    "this class is helpful",
-    "i enjoyed the lecture",
-    "this lecture is excellent",
-    "session was very useful",
-    "this topic is interesting",
-    "i understood the concept",
-    "teacher explained very well",
-    "this course is amazing",
-
-    "this course is boring",
-    "i did not understand",
-    "session was confusing",
-    "teaching is not clear",
-    "this class is difficult",
-    "i did not like the lecture",
-    "this topic is hard",
-    "lecture was not useful",
-    "i am confused",
-    "teacher did not explain well",
-    "this session is bad",
-    "course was difficult"
+    "this class is helpful"
 ]
 
-labels = np.array([
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-])
+marathi_sentences = [
+    "mala ai avadte",
+    "mala python avadte",
+    "apan transformer shikto",
+    "ha course changla aahe",
+    "teacher changle samjavtat",
+    "students shikat aahet",
+    "machine learning interesting aahe",
+    "deep learning powerful aahe",
+    "mala ha session avadto",
+    "ha class helpful aahe"
+]
 
-for s, l in zip(sentences, labels):
-    print(s, "=>", "Positive" if l == 1 else "Negative")
+# Decoder output requires start and end tokens
+target_sentences = ["start " + sentence + " end" for sentence in marathi_sentences]
+
+for eng, mar in zip(english_sentences, target_sentences):
+    print(eng, " ---> ", mar)
 
 
-# ------------------------------------------------------------
-# Step 2: Tokenization and Padding
-# ------------------------------------------------------------
+# ============================================================
+# Step 2: Text Vectorization
+# ============================================================
 
 Header(2, "Tokenization and Padding")
-print("Explanation: Each word is converted into a number. Padding makes every sentence length equal.")
 
-sequence_length = 8
+print("Explanation: Converting English and Marathi words into token numbers.")
+
 vocab_size = 1000
+sequence_length = 8
 
-vectorizer = layers.TextVectorization(
+english_vectorizer = layers.TextVectorization(
     max_tokens=vocab_size,
     output_sequence_length=sequence_length
 )
 
-vectorizer.adapt(sentences)
-
-x_data = vectorizer(sentences)
-
-print("\nVocabulary:")
-for index, word in enumerate(vectorizer.get_vocabulary()):
-    print(index, ":", word)
-
-print("\nSample Tokenized Output:")
-for sentence, tokens in zip(sentences[:5], x_data.numpy()[:5]):
-    print(sentence)
-    print(tokens)
-    print("-" * 50)
-
-
-# ------------------------------------------------------------
-# Step 3: Embedding and Positional Encoding
-# ------------------------------------------------------------
-
-Header(3, "Embedding and Positional Encoding")
-print("Token numbers are converted into vectors. Position information is added because Transformer does not read words sequentially like RNN.")
-
-embed_dim = 16
-
-sample_embedding_layer = layers.Embedding(vocab_size, embed_dim)
-sample_position_layer = layers.Embedding(sequence_length, embed_dim)
-
-sample_tokens = x_data[:1]
-positions = tf.range(start=0, limit=sequence_length, delta=1)
-
-token_embedding_output = sample_embedding_layer(sample_tokens)
-position_embedding_output = sample_position_layer(positions)
-
-print("\nSample Input Tokens:")
-print(sample_tokens.numpy())
-
-print("\nToken Embedding Shape:")
-print(token_embedding_output.shape)
-
-print("\nSample Token Embedding of First Word:")
-print(token_embedding_output[0][0].numpy())
-
-print("\nPosition Embedding Shape:")
-print(position_embedding_output.shape)
-
-print("\nSample Position Embedding of Position 0:")
-print(position_embedding_output[0].numpy())
-
-
-# ------------------------------------------------------------
-# Step 4: Self-Attention
-# ------------------------------------------------------------
-
-Header(4, "Self-Attention")
-print("Each word compares itself with every other word in the same sentence.")
-
-sample_combined_embedding = token_embedding_output + position_embedding_output
-
-attention_layer = layers.MultiHeadAttention(
-    num_heads=2,
-    key_dim=embed_dim
+marathi_vectorizer = layers.TextVectorization(
+    max_tokens=vocab_size,
+    output_sequence_length=sequence_length + 1
 )
 
-attention_output, attention_scores = attention_layer(
-    sample_combined_embedding,
-    sample_combined_embedding,
-    return_attention_scores=True
-)
+english_vectorizer.adapt(english_sentences)
+marathi_vectorizer.adapt(target_sentences)
 
-print("\nAttention Output Shape:")
-print(attention_output.shape)
+encoder_input_data = english_vectorizer(english_sentences)
+target_token_data = marathi_vectorizer(target_sentences)
 
-print("\nAttention Scores Shape:")
-print(attention_scores.shape)
+# Decoder input: start mala ai avadte
+decoder_input_data = target_token_data[:, :-1]
 
-print("\nSample Attention Score Matrix of Head 1:")
-print(attention_scores[0][0].numpy())
+# Decoder target: mala ai avadte end
+decoder_target_data = target_token_data[:, 1:]
+
+print("\nEnglish Vocabulary:")
+for i, word in enumerate(english_vectorizer.get_vocabulary()):
+    print(i, ":", word)
+
+print("\nMarathi Vocabulary:")
+for i, word in enumerate(marathi_vectorizer.get_vocabulary()):
+    print(i, ":", word)
+
+print("\nSample Encoder Input:")
+print(english_sentences[0])
+print(encoder_input_data[0].numpy())
+
+print("\nSample Decoder Input:")
+print(decoder_input_data[0].numpy())
+
+print("\nSample Decoder Target:")
+print(decoder_target_data[0].numpy())
 
 
-# ------------------------------------------------------------
-# Step 5: Custom Embedding Layer for Actual Model
-# ------------------------------------------------------------
+# ============================================================
+# Step 3: Positional Embedding Layer
+# ============================================================
+
+Header(3, "Token Embedding and Positional Embedding")
+
+print("Transformer needs word meaning plus word position.")
 
 class TokenAndPositionEmbedding(layers.Layer):
     def __init__(self, max_len, vocab_size, embed_dim):
         super().__init__()
-        self.token_embedding = layers.Embedding(vocab_size, embed_dim)
-        self.position_embedding = layers.Embedding(max_len, embed_dim)
+
+        self.token_embedding = layers.Embedding(
+            input_dim=vocab_size,
+            output_dim=embed_dim
+        )
+
+        self.position_embedding = layers.Embedding(
+            input_dim=max_len,
+            output_dim=embed_dim
+        )
 
     def call(self, x):
-        positions = tf.range(start=0, limit=tf.shape(x)[-1], delta=1)
+        length = tf.shape(x)[-1]
 
-        token_embed = self.token_embedding(x)
-        position_embed = self.position_embedding(positions)
+        positions = tf.range(start=0, limit=length, delta=1)
 
-        return token_embed + position_embed
+        token_embeddings = self.token_embedding(x)
+        position_embeddings = self.position_embedding(positions)
+
+        return token_embeddings + position_embeddings
 
 
-# ------------------------------------------------------------
-# Step 6: Transformer Encoder Block
-# ------------------------------------------------------------
+# ============================================================
+# Step 4: Transformer Encoder Block
+# ============================================================
+
+Header(4, "Transformer Encoder Block")
+
+print("""
+Encoder reads the complete English sentence.
+It uses Multi-Head Self-Attention to understand relationships between words.
+""")
 
 class TransformerEncoder(layers.Layer):
     def __init__(self, embed_dim, num_heads, ff_dim):
@@ -183,133 +163,260 @@ class TransformerEncoder(layers.Layer):
             layers.Dense(embed_dim)
         ])
 
-        self.norm1 = layers.LayerNormalization()
-        self.norm2 = layers.LayerNormalization()
+        self.layernorm1 = layers.LayerNormalization()
+        self.layernorm2 = layers.LayerNormalization()
 
         self.dropout1 = layers.Dropout(0.1)
         self.dropout2 = layers.Dropout(0.1)
 
-    def call(self, x, training=False):
-        attention_output = self.attention(x, x)
+    def call(self, inputs, training=False):
+
+        attention_output = self.attention(
+            query=inputs,
+            key=inputs,
+            value=inputs
+        )
 
         attention_output = self.dropout1(attention_output, training=training)
 
-        out1 = self.norm1(x + attention_output)
+        out1 = self.layernorm1(inputs + attention_output)
 
         ffn_output = self.ffn(out1)
 
         ffn_output = self.dropout2(ffn_output, training=training)
 
-        return self.norm2(out1 + ffn_output)
+        encoder_output = self.layernorm2(out1 + ffn_output)
+
+        return encoder_output
 
 
-# ------------------------------------------------------------
-# Step 7: Model Building
-# ------------------------------------------------------------
+# ============================================================
+# Step 5: Transformer Decoder Block
+# ============================================================
 
-Header(5, "Model Building")
-print("Combining Embedding, Positional Encoding, Transformer Encoder and Classification Layer.")
+Header(5, "Transformer Decoder Block")
 
+print("""
+Decoder generates Marathi output.
+It uses:
+1. Masked Self-Attention
+2. Encoder-Decoder Attention
+3. Feed Forward Network
+""")
+
+class TransformerDecoder(layers.Layer):
+    def __init__(self, embed_dim, num_heads, ff_dim):
+        super().__init__()
+
+        self.masked_attention = layers.MultiHeadAttention(
+            num_heads=num_heads,
+            key_dim=embed_dim
+        )
+
+        self.encoder_decoder_attention = layers.MultiHeadAttention(
+            num_heads=num_heads,
+            key_dim=embed_dim
+        )
+
+        self.ffn = tf.keras.Sequential([
+            layers.Dense(ff_dim, activation="relu"),
+            layers.Dense(embed_dim)
+        ])
+
+        self.layernorm1 = layers.LayerNormalization()
+        self.layernorm2 = layers.LayerNormalization()
+        self.layernorm3 = layers.LayerNormalization()
+
+        self.dropout1 = layers.Dropout(0.1)
+        self.dropout2 = layers.Dropout(0.1)
+        self.dropout3 = layers.Dropout(0.1)
+
+    def get_causal_attention_mask(self, inputs):
+        batch_size = tf.shape(inputs)[0]
+        seq_len = tf.shape(inputs)[1]
+
+        i = tf.range(seq_len)[:, None]
+        j = tf.range(seq_len)
+
+        mask = tf.cast(i >= j, dtype="int32")
+        mask = tf.reshape(mask, (1, seq_len, seq_len))
+
+        mult = tf.concat(
+            [tf.expand_dims(batch_size, -1), tf.constant([1, 1], dtype=tf.int32)],
+            axis=0
+        )
+
+        return tf.tile(mask, mult)
+
+    def call(self, decoder_inputs, encoder_outputs, training=False):
+
+        causal_mask = self.get_causal_attention_mask(decoder_inputs)
+
+        # 1. Masked Self-Attention
+        attention_output1 = self.masked_attention(
+            query=decoder_inputs,
+            key=decoder_inputs,
+            value=decoder_inputs,
+            attention_mask=causal_mask
+        )
+
+        attention_output1 = self.dropout1(attention_output1, training=training)
+
+        out1 = self.layernorm1(decoder_inputs + attention_output1)
+
+        # 2. Encoder-Decoder Attention
+        attention_output2 = self.encoder_decoder_attention(
+            query=out1,
+            key=encoder_outputs,
+            value=encoder_outputs
+        )
+
+        attention_output2 = self.dropout2(attention_output2, training=training)
+
+        out2 = self.layernorm2(out1 + attention_output2)
+
+        # 3. Feed Forward Network
+        ffn_output = self.ffn(out2)
+
+        ffn_output = self.dropout3(ffn_output, training=training)
+
+        decoder_output = self.layernorm3(out2 + ffn_output)
+
+        return decoder_output
+
+
+# ============================================================
+# Step 6: Model Building
+# ============================================================
+
+Header(6, "Complete Transformer Model Building")
+
+print("Connecting Encoder and Decoder together.")
+
+embed_dim = 32
 num_heads = 2
-ff_dim = 32
+ff_dim = 64
 
-inputs = layers.Input(shape=(sequence_length,), dtype=tf.int64)
+encoder_inputs = layers.Input(shape=(sequence_length,), dtype=tf.int64, name="encoder_inputs")
+decoder_inputs = layers.Input(shape=(sequence_length,), dtype=tf.int64, name="decoder_inputs")
 
-x = TokenAndPositionEmbedding(
+encoder_embedding = TokenAndPositionEmbedding(
     sequence_length,
     vocab_size,
     embed_dim
-)(inputs)
+)(encoder_inputs)
 
-x = TransformerEncoder(
+encoder_outputs = TransformerEncoder(
     embed_dim,
     num_heads,
     ff_dim
-)(x)
+)(encoder_embedding)
 
-x = layers.GlobalAveragePooling1D()(x)
+decoder_embedding = TokenAndPositionEmbedding(
+    sequence_length,
+    vocab_size,
+    embed_dim
+)(decoder_inputs)
 
-x = layers.Dense(32, activation="relu")(x)
+decoder_outputs = TransformerDecoder(
+    embed_dim,
+    num_heads,
+    ff_dim
+)(decoder_embedding, encoder_outputs)
 
-x = layers.Dropout(0.2)(x)
+decoder_outputs = layers.Dense(vocab_size, activation="softmax")(decoder_outputs)
 
-outputs = layers.Dense(1, activation="sigmoid")(x)
-
-model = tf.keras.Model(inputs, outputs)
+model = tf.keras.Model(
+    [encoder_inputs, decoder_inputs],
+    decoder_outputs
+)
 
 model.compile(
     optimizer="adam",
-    loss="binary_crossentropy",
+    loss="sparse_categorical_crossentropy",
     metrics=["accuracy"]
 )
 
 model.summary()
 
 
-# ------------------------------------------------------------
-# Step 8: Model Training
-# ------------------------------------------------------------
+# ============================================================
+# Step 7: Training
+# ============================================================
 
-Header(6, "Model Training")
-print("Model learns positive and negative sentence patterns from training data.")
+Header(7, "Model Training")
 
-history = model.fit(
-    x_data,
-    labels,
-    epochs=80,
+print("""
+Encoder input  : English sentence
+Decoder input  : Marathi sentence starting with start token
+Decoder target : Marathi sentence shifted by one word
+""")
+
+decoder_target_data = np.expand_dims(decoder_target_data, -1)
+
+model.fit(
+    [encoder_input_data, decoder_input_data],
+    decoder_target_data,
+    epochs=300,
     batch_size=2,
     verbose=1
 )
 
 
-# ------------------------------------------------------------
-# Step 9: Training Evaluation
-# ------------------------------------------------------------
+# ============================================================
+# Step 8: Reverse Vocabulary for Prediction
+# ============================================================
 
-Header(7, "Training Evaluation")
-print("Explanation: Checking how much model learned from the training data.")
+Header(8, "Reverse Vocabulary Creation")
 
-loss, accuracy = model.evaluate(x_data, labels, verbose=0)
+print("Creating index-to-word dictionary for Marathi output.")
 
-print("Training Loss     :", loss)
-print("Training Accuracy :", accuracy)
+marathi_vocab = marathi_vectorizer.get_vocabulary()
+index_to_word = dict(enumerate(marathi_vocab))
+
+for i in range(15):
+    print(i, ":", index_to_word.get(i, ""))
 
 
-# ------------------------------------------------------------
-# Step 10: Prediction
-# ------------------------------------------------------------
+# ============================================================
+# Step 9: Sentence Translation Function
+# ============================================================
 
-Header(8, "Prediction")
-print("Model predicts whether new sentences are positive or negative.")
+Header(9, "Translation Function")
 
-test_sentences = [
-    "this session is good",
-    "i did not like this course",
-    "teaching is excellent",
-    "this course is confusing",
-    "this class is very helpful",
-    "course was difficult",
-    "teacher explained very well",
-    "i am confused"
-]
+print("""
+During prediction, decoder generates one word at a time.
+First input is 'start'.
+Then predicted word is added back to decoder input.
+""")
 
-test_data = vectorizer(test_sentences)
+def translate_sentence(input_sentence):
+    print("\nInput Sentence:", input_sentence)
 
-print("\nTest Sentence Tokens:")
-for sentence, tokens in zip(test_sentences, test_data.numpy()):
-    print(sentence)
-    print(tokens)
-    print("-" * 50)
+    encoder_input = english_vectorizer([input_sentence])
 
-predictions = model.predict(test_data)
+    decoded_sentence = "start"
 
-print("\nFinal Prediction Output:")
+    for i in range(sequence_length):
 
-for sentence, prediction in zip(test_sentences, predictions):
-    score = prediction[0]
-    result = "Positive" if score >= 0.5 else "Negative"
+        decoder_input = marathi_vectorizer([decoded_sentence])[:, :-1]
 
-    print("-" * 60)
-    print("Sentence :", sentence)
-    print("Score    :", score)
-    print("Result   :", result)
+        prediction = model.predict(
+            [encoder_input, decoder_input],
+            verbose=0
+        )
+
+        predicted_token_index = np.argmax(prediction[0, i, :])
+
+        predicted_word = index_to_word.get(predicted_token_index, "")
+
+        if predicted_word == "end" or predicted_word == "":
+            break
+
+        decoded_sentence += " " + predicted_word
+
+    final_sentence = decoded_sentence.replace("start", "").strip()
+
+    return final_sentence
+
+
