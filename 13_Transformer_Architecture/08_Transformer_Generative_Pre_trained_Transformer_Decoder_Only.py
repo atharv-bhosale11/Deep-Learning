@@ -436,4 +436,18 @@ def generate_text(start_text, number_of_words=5):
 
     return generated_text
 
+generation_inputs = [
+    "i love",
+    "machine learning",
+    "decoder transformer",
+    "gpt",
+    "students learn"
+]
+
+for text in generation_inputs:
+    output = generate_text(text, number_of_words=4)
+
+    print("-" * 60)
+    print("Start Text     :", text)
+    print("Generated Text :", output)
 
