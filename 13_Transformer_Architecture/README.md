@@ -100,6 +100,9 @@ from tensorflow.keras import layers
 - Understand encoder-decoder Transformers for neural machine translation.
 - Implement English-to-Marathi translation.
 - Understand decoder-only Transformer architecture and GPT fundamentals.
+- Learn next-token prediction and autoregressive text generation.
+- Develop practical knowledge of Transformer architecture through Python implementations.
+
 
 ## Author
 
