@@ -95,6 +95,10 @@ from tensorflow.keras import layers
 - Understand Transformer encoder and decoder architectures.
 - Learn masked self-attention and causal masking.
 - Understand residual connections and layer normalization.
+- Explore feed-forward networks inside Transformer blocks.
+- Implement encoder-only Transformers for sentiment classification.
+- Understand encoder-decoder Transformers for neural machine translation.
+- Implement English-to-Marathi translation.
 
 ## Author
 
