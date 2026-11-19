@@ -99,6 +99,7 @@ from tensorflow.keras import layers
 - Implement encoder-only Transformers for sentiment classification.
 - Understand encoder-decoder Transformers for neural machine translation.
 - Implement English-to-Marathi translation.
+- Understand decoder-only Transformer architecture and GPT fundamentals.
 
 ## Author
 
