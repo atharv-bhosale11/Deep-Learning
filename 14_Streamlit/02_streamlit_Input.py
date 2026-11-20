@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("Deep Learning by Atharv Bhosale")
+st.title("Deep Learning Codes by Atharv Bhosale")
 
 name = st.text_input("Enter your name")
 
