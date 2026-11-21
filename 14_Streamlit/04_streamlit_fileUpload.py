@@ -9,3 +9,4 @@ uploaded_file = st.file_uploader(
 
 if uploaded_file:
     st.success("PDF Uploaded Successfully")
+ 
