@@ -55,7 +55,7 @@ The application will open in your default web browser.
 - Working with text input and buttons.
 - Handling user interactions.
 - Uploading PDF documents.
-
+- Extracting and displaying PDF text.
 
 ## 👨‍💻 Author
 
