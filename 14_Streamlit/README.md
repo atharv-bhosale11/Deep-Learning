@@ -54,6 +54,7 @@ The application will open in your default web browser.
 - Creating web application interfaces using Python.
 - Working with text input and buttons.
 - Handling user interactions.
+- Uploading PDF documents.
 
 
 ## 👨‍💻 Author
