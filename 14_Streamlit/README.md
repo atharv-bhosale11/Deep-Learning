@@ -56,6 +56,8 @@ The application will open in your default web browser.
 - Handling user interactions.
 - Uploading PDF documents.
 - Extracting and displaying PDF text.
+- Building interactive Python applications.
+
 
 ## 👨‍💻 Author
 
