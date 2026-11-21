@@ -1,7 +1,7 @@
 import streamlit as st
 import PyPDF2
 
-st.title("Welcome to PDF Reader")
+st.title(" Welcome to PDF Reader ")
 
 uploaded_file = st.file_uploader(
     "Upload PDF",
